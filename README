@@ -1,0 +1,68 @@
+go-template
+===========
+
+This is the basic template I use in my daily web development using GO as the 
+language. This template is still in improvement, so there will be some 
+inconsistency in the naming, etc. Mainly this template is using MVC framework.
+
+
+Tech Stacks
+===========
+
+- Gin for the web framework ( https://gin-gonic.com/ ).
+- Zap for request validation ( https://github.com/uber-go/zap ).
+- Tailwind + Daisy UI for CSS ( https://daisyui.com/ ).
+- JQuery ( https://jquery.com/ ).
+- Go Template.
+
+
+Not Forced Yet Important To Note
+================================
+
+- Name used will be in plural form.
+- Every route will be in templates/{folder_name} folder.
+- From previous {folder_name}, will be used as controllers file's name too.
+- For route in main.go, the template name follows {folder_name}
+- One model in one file, example user model will be in models/user.go
+- Declare request validation as close as the route.
+
+
+Main Folder Explanation
+=======================
+
+- Controllers 
+  For now, there will be 1 file for each root route.
+- Models
+  Mainly for models, but not always have interaction with database.
+- Pkg
+  For any libs or helper, I will put it here, group by folders.
+- Static
+- Templates
+- Logs
+  This folder will record the logging from the application.
+
+
+The Workflow
+============
+
+This section will explain how I work with this template in normal situation.
+Let's say I want to add a new service. The things I need to do is as 
+following:
+  1. Create the template in template folders, and create the route file for
+     the template, example "user" route, I will create templates/user/user.html.
+     In most cases, the created template will use "body" block. See the folder
+     for example.
+  2. Register the newly created template in main.go's HMTL Renderer, add the
+     template's name and the file location.
+  3. Create the controller's file in controllers folder. In our example case
+     will be controllers/user.go
+  4. Register the created controller into main.go.
+
+And that's all, if you need to create new model, you can check the models folder
+for example. For validation I am using go validator combined with custom middleware
+and struct, you can check the example usage in the controller file.
+
+
+The Production and Deployment
+=============================
+--In Progress--
